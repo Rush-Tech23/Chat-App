@@ -1,6 +1,5 @@
-
 .app-container {
-  height:100vh;
+  height: 100vh;
   width: 100vw;
   display: flex;
   justify-content: center;
@@ -9,11 +8,11 @@
   margin: 0 auto;
 }
 
-
 .chat-container {
-  width: 50%;
-  max-width: 500px; 
+  width: 90%; 
+  max-width: 500px;
   height: 80%;
+  max-height: 90vh; 
   background-color: #ffffff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
@@ -32,20 +31,17 @@
   border-bottom: 1px solid #ddd;
 }
 
-
 .message-list {
   flex: 1;
   padding: 15px;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   gap: 10px;
   overflow-y: auto;
+  background-image: url("freepik__upload__203.jpeg");
   background-size: cover;
   background-position: center;
-    background-image: url("freepik__upload__203.jpeg");
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat;
+  background-repeat: no-repeat;
 }
 
 .message {
@@ -69,13 +65,14 @@
   align-self: flex-start;
 }
 
-
 .message-form {
   display: flex;
   padding: 10px;
   background-color: #202c33;
   border-top: 1px solid #ddd;
   gap: 10px;
+  position: sticky; 
+  bottom: 0; 
 }
 
 .message-input {
@@ -83,9 +80,8 @@
   padding: 10px;
   border: 1px solid #a2aaa4;
   border-radius: 8px;
-  margin-right: 10px;
   background-color: #2a3942;
-  
+  color: #fff; 
 }
 
 .send-button {
@@ -97,7 +93,6 @@
   cursor: pointer;
   font-weight: bold;
 }
-
 
 .message-list::-webkit-scrollbar {
   width: 8px;
