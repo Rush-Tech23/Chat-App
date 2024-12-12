@@ -7,11 +7,11 @@ import { Server } from "socket.io";
 const app = express();
 const port = 3000;
 
-// Use middleware
+
 app.use(cors());
 app.use(express.json());
 
-// MongoDB connection URI
+
 const uri =
   "mongodb+srv://rushikesh22:T1KHFGws6Dosu0Ec@cluster0.desf8.mongodb.net/chats?retryWrites=true&w=majority&appName=Cluster0";
 
@@ -23,16 +23,16 @@ const client = new MongoClient(uri, {
   },
 });
 
-// Set up the HTTP server and socket.io
+
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173", // Adjust this to match your frontend URL
+    origin: "http://localhost:5173", 
     methods: ["GET", "POST"],
   },
 });
 
-// Connect to MongoDB
+
 async function connectToDatabase() {
   try {
     await client.connect();
@@ -48,21 +48,21 @@ let db;
 connectToDatabase().then((database) => {
   db = database;
 
-  // Start the server after DB connection is ready
+ 
   server.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
   });
 });
 
-// Socket.io event handling
+
 io.on("connection", (socket) => {
   console.log("New client connected");
 
-  // Listen for messages from clients
+
   socket.on("sendMessage", (data) => {
     console.log("Message received:", data);
 
-    // Save the message to MongoDB
+ 
     db.collection("messages")
       .insertOne({
         sender: data.sender,
@@ -76,19 +76,19 @@ io.on("connection", (socket) => {
       .catch((err) => console.error("Error saving message:", err));
   });
 
-  // Handle client disconnection
+ 
   socket.on("disconnect", () => {
     console.log("Client disconnected");
   });
 });
 
-// API route to fetch messages from the database
+
 app.get("/messages", async (req, res) => {
   try {
     const messages = await db
       .collection("messages")
       .find()
-      .sort({ timestamp: 1 }) // Sort messages in chronological order
+      .sort({ timestamp: 1 }) 
       .toArray();
     res.json(messages);
   } catch (error) {
@@ -97,7 +97,7 @@ app.get("/messages", async (req, res) => {
   }
 });
 
-// API route to handle new messages (POST request)
+
 app.post("/messages", async (req, res) => {
   try {
     const { sender, text } = req.body;
@@ -105,7 +105,7 @@ app.post("/messages", async (req, res) => {
       return res.status(400).json({ error: "Message text is required" });
     }
 
-    // Save the message to MongoDB
+
     const result = await db.collection("messages").insertOne({
       sender,
       text,
