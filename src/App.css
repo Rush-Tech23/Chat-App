@@ -1,10 +1,10 @@
 
 .app-container {
+  height:100vh;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 700px;
-  width: 900px;
   background-color: #f0f0f0;
   margin: 0 auto;
 }
@@ -42,8 +42,11 @@
   overflow-y: auto;
   background-size: cover;
   background-position: center;
+    background-image: url("freepik__upload__203.jpeg");
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
 }
-
 
 .message {
   max-width: 70%;
@@ -70,7 +73,7 @@
 .message-form {
   display: flex;
   padding: 10px;
-  background-color: #f0f0f0;
+  background-color: #202c33;
   border-top: 1px solid #ddd;
   gap: 10px;
 }
@@ -78,17 +81,19 @@
 .message-input {
   flex: 1;
   padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 20px;
+  border: 1px solid #a2aaa4;
+  border-radius: 8px;
   margin-right: 10px;
+  background-color: #2a3942;
+  
 }
 
 .send-button {
   padding: 10px 20px;
   border: none;
   border-radius: 20px;
-  background-color: #223a37;
-  color: #fff;
+  background-color: #1be680;
+  color: #eaeeed;
   cursor: pointer;
   font-weight: bold;
 }
